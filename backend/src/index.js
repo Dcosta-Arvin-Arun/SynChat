@@ -1,9 +1,9 @@
 import express from 'express';
+import dotenv from 'dotenv';
+import cookieParser from "cookie-parser";
 import authRoute from './routes/auth.route.js';
 import messageRoute from './routes/message.route.js';
-import dotenv from 'dotenv';
 import { connectDB } from './lib/db.js';
-import cookieParser from "cookie-parser";
 
 dotenv.config();
 
