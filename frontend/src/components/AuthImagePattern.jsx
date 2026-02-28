@@ -14,26 +14,55 @@ const AuthImagePattern = ({ title, subtitle }) => {
   return (
     <div
       onMouseMove={handleMouseMove}
-      className="hidden lg:flex relative items-center justify-center overflow-hidden bg-neutral-950 p-12"
+      className="hidden lg:flex relative items-center justify-center overflow-hidden bg-base-200 p-12"
     >
-      <div className="absolute inset-0 opacity-40 bg-[radial-gradient(circle_at_20%_20%,#6366f1,transparent_40%),radial-gradient(circle_at_80%_30%,#ec4899,transparent_40%),radial-gradient(circle_at_40%_80%,#14b8a6,transparent_40%)] animate-[pulse_8s_ease-in-out_infinite]" />
-
+      {/* Sharper radial mesh */}
       <div
-        className="absolute inset-0 transition-all duration-300 ease-out"
+        className="absolute inset-0 opacity-60"
         style={{
-          background: `radial-gradient(500px circle at ${position.x}px ${position.y}px, rgba(99,102,241,0.18), transparent 60%)`,
+          background: `
+            radial-gradient(circle at 20% 20%, var(--color-primary) 0%, transparent 35%),
+            radial-gradient(circle at 80% 30%, var(--color-secondary) 0%, transparent 35%),
+            radial-gradient(circle at 40% 80%, var(--color-accent) 0%, transparent 35%)
+          `,
         }}
       />
 
-      <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:50px_50px]" />
+      {/* Stronger interactive spotlight */}
+      <div
+        className="absolute inset-0 transition-all duration-200 ease-out"
+        style={{
+          background: `
+            radial-gradient(
+              400px circle at ${position.x}px ${position.y}px,
+              color-mix(in srgb, var(--color-primary) 30%, transparent),
+              transparent 60%
+            )
+          `,
+        }}
+      />
 
-      <div className="absolute inset-0 bg-gradient-to-br from-black/40 via-transparent to-black/60" />
+      {/* Crisp grid */}
+      <div
+        className="absolute inset-0 opacity-[0.08]"
+        style={{
+          backgroundImage: `
+            linear-gradient(to right, var(--color-base-content) 1px, transparent 1px),
+            linear-gradient(to bottom, var(--color-base-content) 1px, transparent 1px)
+          `,
+          backgroundSize: "40px 40px",
+        }}
+      />
 
-      <div className="relative z-10 max-w-md text-center text-white">
-        <h2 className="text-4xl font-bold mb-5 tracking-tight leading-tight bg-gradient-to-r from-white via-white to-white/70 bg-clip-text text-transparent">
+      {/* Subtle vignette for depth */}
+      <div className="absolute inset-0 bg-gradient-to-br from-base-300/30 via-transparent to-base-300/50" />
+
+      {/* Content */}
+      <div className="relative z-10 max-w-md text-center">
+        <h2 className="text-4xl font-bold mb-5 tracking-tight leading-tight text-base-content">
           {title}
         </h2>
-        <p className="text-white/60 text-lg leading-relaxed">
+        <p className="text-base-content/70 text-lg leading-relaxed">
           {subtitle}
         </p>
       </div>
