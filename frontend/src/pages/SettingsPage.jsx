@@ -12,9 +12,9 @@ const SettingsPage = () => {
 
   return (
     <div className="container mx-auto px-4 pt-20 max-w-5xl">
-      <div className="space-y-6">
+      <div className="space-y-8">
         <div className="flex flex-col gap-1">
-          <h2 className="text-lg font-semibold">Theme</h2>
+          <h2 className="text-lg font-semibold tracking-tight">Theme</h2>
           <p className="text-sm text-base-content/70">Choose a theme for your chat interface</p>
         </div>
 
@@ -23,8 +23,9 @@ const SettingsPage = () => {
             <button
               key={t}
               className={`
-                group flex flex-col items-center gap-1.5 p-2 rounded-lg transition-colors
-                ${theme === t ? "bg-base-200" : "hover:bg-base-200/50"}
+                group flex flex-col items-center gap-1.5 p-2 rounded-lg transition-all
+                border border-base-300 shadow-sm
+                ${theme === t ? "bg-base-200 ring-2 ring-primary" : "hover:bg-base-200/50"}
               `}
               onClick={() => setTheme(t)}
             >
@@ -44,16 +45,16 @@ const SettingsPage = () => {
         </div>
 
         {/* Preview Section */}
-        <h3 className="text-lg font-semibold mb-3">Preview</h3>
-        <div className="rounded-xl border border-base-300 overflow-hidden bg-base-100 shadow-lg">
-          <div className="p-4 bg-base-200">
+        <h3 className="text-lg font-semibold mb-3 tracking-tight">Preview</h3>
+        <div className="rounded-2xl border border-base-300 overflow-hidden bg-base-100/80 shadow-2xl animate-fade-in">
+          <div className="p-4 bg-base-200/80">
             <div className="max-w-lg mx-auto">
               {/* Mock Chat UI */}
-              <div className="bg-base-100 rounded-xl shadow-sm overflow-hidden">
+              <div className="bg-base-100 rounded-xl shadow-md overflow-hidden">
                 {/* Chat Header */}
-                <div className="px-4 py-3 border-b border-base-300 bg-base-100">
+                <div className="px-4 py-3 border-b border-base-300 bg-base-100/80">
                   <div className="flex items-center gap-3">
-                    <div className="w-8 h-8 rounded-full bg-primary flex items-center justify-center text-primary-content font-medium">
+                    <div className="w-8 h-8 rounded-full bg-primary flex items-center justify-center text-primary-content font-medium shadow">
                       J
                     </div>
                     <div>
@@ -64,7 +65,7 @@ const SettingsPage = () => {
                 </div>
 
                 {/* Chat Messages */}
-                <div className="p-4 space-y-4 min-h-[200px] max-h-[200px] overflow-y-auto bg-base-100">
+                <div className="p-4 space-y-4 min-h-[200px] max-h-[200px] overflow-y-auto bg-base-100 custom-scrollbar">
                   {PREVIEW_MESSAGES.map((message) => (
                     <div
                       key={message.id}
@@ -91,7 +92,7 @@ const SettingsPage = () => {
                 </div>
 
                 {/* Chat Input */}
-                <div className="p-4 border-t border-base-300 bg-base-100">
+                <div className="p-4 border-t border-base-300 bg-base-100/80">
                   <div className="flex gap-2">
                     <input
                       type="text"
@@ -100,7 +101,7 @@ const SettingsPage = () => {
                       value="This is a preview"
                       readOnly
                     />
-                    <button className="btn btn-primary h-10 min-h-0">
+                    <button className="btn btn-primary h-10 min-h-0 shadow-md">
                       <Send size={18} />
                     </button>
                   </div>
